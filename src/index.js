@@ -189,6 +189,12 @@ function convertToFahrenheit(event) {
   let lowtempElement = document.querySelector("#lowTemp");
   lowtempF = (lowTemp * 9) / 5 + 32;
   lowtempElement.innerHTML = Math.round(lowtempF);
+  let forecastTemp = document.querySelectorAll(".forecast");
+  forecastTemp.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = `${Math.round((currentTemp * 9) / 5 + 32)}`;
+  });
+
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   celsiusLink.addEventListener("click", convertToCelsius);
@@ -206,6 +212,11 @@ function convertToCelsius(event) {
   hightempElement.innerHTML = Math.round(highTemp);
   let lowtempElement = document.querySelector("#lowTemp");
   lowtempElement.innerHTML = Math.round(lowTemp);
+  let forecastTemp = document.querySelectorAll(".forecast");
+  forecastTemp.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = `${Math.round((currentTemp - 32) * 5 + 9)}`;
+  });
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
   celsiusLink.removeEventListener("click", convertToCelsius);
