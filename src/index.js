@@ -191,6 +191,7 @@ function convertToFahrenheit(event) {
   lowtempElement.innerHTML = Math.round(lowtempF);
   let forecastTemp = document.querySelectorAll(".forecast");
   forecastTemp.forEach(function (item) {
+    console.log(forecastTemp);
     let currentTemp = item.innerHTML;
     item.innerHTML = `${Math.round((currentTemp * 9) / 5 + 32)}`;
   });
@@ -249,20 +250,6 @@ function changeSky(response) {
     skyImage.setAttribute("src", "images/sun.png");
   }
 }
-var today = new Date().getHours();
-if (today >= 0 && today <= 5) {
-  document.body.style.backgroundImage =
-    "linear-gradient(to top, #000000 0%, #080742 100%)";
-} else if (today === 6 || today === 11) {
-  document.body.style.backgroundImage =
-    "linear-gradient(to top,  #080742 0%, #3533a1 100%)";
-} else if (today === 12 || today === 17) {
-  document.body.style.backgroundImage =
-    "linear-gradient(to top,  #a06c0c 0%, #c7a464 100%)";
-} else if (today >= 18 && today <= 23) {
-  document.body.style.backgroundImage =
-    "linear-gradient(120deg, #080742 0%, #3533a1 100%)";
-}
 
 // fiveDayForecast();
 function displayWeeklyForecast(response) {
@@ -273,9 +260,9 @@ function displayWeeklyForecast(response) {
     forecast = response.data.daily[index];
     forecastElement.innerHTML += `
   <div class="col-2">
-    <h6>
+    <h6><small>
     ${formatDate(forecast.dt * 1000)}
-    </h6>
+    </small></h6>
     <img src="https://openweathermap.org/img/wn/${
       forecast.weather[0].icon
     }@2x.png" alt="https://openweathermap.org/img/wn/${
@@ -288,7 +275,7 @@ function displayWeeklyForecast(response) {
     )}°
     </span>
     <br />
-  </div>;`;
+  </div>`;
   }
 }
 function displayCurrentForecast(response) {
@@ -315,5 +302,18 @@ function displayCurrentForecast(response) {
   </div>`;
   }
 }
-
+var today = new Date().getHours();
+if (today >= 0 && today <= 5) {
+  document.body.style.backgroundImage =
+    "linear-gradient(to top, #000000 0%, #080742 100%)";
+} else if (today >= 6 && today <= 11) {
+  document.body.style.backgroundImage =
+    "linear-gradient(to top,  #080742 0%, #3533a1 100%)";
+} else if (today >= 12 && today <= 17) {
+  document.body.style.backgroundImage =
+    "linear-gradient(to top,  #a06c0c 0%, #c7a464 100%)";
+} else if (today >= 18 && today <= 23) {
+  document.body.style.backgroundImage =
+    "linear-gradient(120deg, #080742 0%, #3533a1 100%)";
+}
 searchCity("Sydney");
