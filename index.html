@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather-App🌥</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+
+    <script
+      src="https://kit.fontawesome.com/c4828aeb04.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h1>Weather</h1>
+          <form id="cityForm">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <input
+                    id="search-Input"
+                    type="text"
+                    class="form-control"
+                    placeholder="City or Town ie Sydney"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <button
+                  type="submit"
+                  id="search-Button"
+                  class="btn btn-primary"
+                >
+                  Search
+                </button>
+                <button id="current-Location">Current Location</button>
+                <small id="clock"></small
+                ><span class="units"
+                  ><small>
+                    <a href="#" id="celsius" class="active">°C</a>
+                    <a href="#" id="fahrenheit">°F</a></small
+                  >
+                </span>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div id="weatherSpace">
+          <img src="images/sun.png" alt="sun image" />
+        </div>
+        <div class="current-weather">
+          <h3 id="city-Name"></h3>
+        </div>
+        <h6>Today Is <span id="current-Date"></span></h6>
+        <h6>The time is - <span id="time-now"></span></h6>
+        <div class="row" id="header">
+          <div class="col">
+            Currently
+            <span id="current-Temp"></span>°
+            <br />
+            High of <span id="high-Temp"></span>°<br />
+            Low of <span id="lowTemp"></span>°
+
+            <div class="col">
+              <div class="information">
+                Sky Cover: <span id="sky-Cover"></span><br />
+                Humidity: <span id="humid"> </span>%<br />
+                Wind: <span id="wind-Speed"></span>km/hr
+                <span id="wind-Direction"></span><br />
+                Sunrise: <span id="sunrise"></span> <br />
+                Sunset: <span id="sunset"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="forecast" id="forecast"></div>
+      </div>
+      <p id="source">
+        <a href="https://github.com/Snofall-Bird/weather-App-week6">
+          Open source code</a
+        >
+        by Sno Wirth
+      </p>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
