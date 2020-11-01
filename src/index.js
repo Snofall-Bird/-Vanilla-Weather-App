@@ -236,6 +236,8 @@ function convertToCelsius(event) {
 let celsiusTemperature = null;
 let highTemp = null;
 let lowTemp = null;
+let forecastMax = null;
+let forecastMin = null;
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", convertToCelsius);
@@ -282,7 +284,7 @@ function displayWeeklyForecast(response) {
    <span class="forecast-TempMax">
       <strong>${Math.round(
         forecast.temp.max
-      )}°</strong> </span> <span class="forecast-TempMin"> ${Math.round(
+      )}°</strong> / </span> <span class="forecast-TempMin"> ${Math.round(
       forecast.temp.min
     )}°
     </span>
@@ -308,7 +310,7 @@ function displayCurrentForecast(response) {
     <span class="forecast-TempMax">
       <strong>${Math.round(
         forecast.main.temp_max
-      )}°</strong> </span> <span class="forecast-TempMin"> ${Math.round(
+      )}°</strong> / </span> <span class="forecast-TempMin"> ${Math.round(
       forecast.main.temp_min
     )}°
     </span>
