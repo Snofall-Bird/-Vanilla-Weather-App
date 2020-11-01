@@ -189,13 +189,17 @@ function convertToFahrenheit(event) {
   let lowtempElement = document.querySelector("#lowTemp");
   lowtempF = (lowTemp * 9) / 5 + 32;
   lowtempElement.innerHTML = Math.round(lowtempF);
-  let forecastTemp = document.querySelectorAll(".forecast");
-  forecastTemp.forEach(function (item) {
-    console.log(forecastTemp);
+  let forecastMax = document.querySelectorAll(".forecast-TempMax");
+  forecastMax.forEach(function (item) {
+    console.log(forecastMax);
     let currentTemp = item.innerHTML;
     item.innerHTML = `${Math.round((currentTemp * 9) / 5 + 32)}`;
   });
-
+  let forecastMin = document.querySelectorAll(".forecast-TempMin");
+  forecastMin.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   celsiusLink.addEventListener("click", convertToCelsius);
@@ -213,10 +217,16 @@ function convertToCelsius(event) {
   hightempElement.innerHTML = Math.round(highTemp);
   let lowtempElement = document.querySelector("#lowTemp");
   lowtempElement.innerHTML = Math.round(lowTemp);
-  let forecastTemp = document.querySelectorAll(".forecast");
-  forecastTemp.forEach(function (item) {
+  let forecastMax = document.querySelectorAll(".forecast-TempMax");
+  forecastMax.forEach(function (item) {
+    console.log(forecastMax);
     let currentTemp = item.innerHTML;
-    item.innerHTML = `${Math.round((currentTemp - 32) * 5 + 9)}`;
+    item.innerHTML = Math.round((currentTemp - 32) * 5 + 9);
+  });
+  let forecastMin = document.querySelectorAll(".forecast-TempMin");
+  forecastMin.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round((currentTemp - 32) * 5 + 9);
   });
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
@@ -269,8 +279,10 @@ function displayWeeklyForecast(response) {
       forecast.weather[0].description
     }"/>
     <br />
-    <span class="forecast-Temp">
-      <strong>${Math.round(forecast.temp.max)}°</strong> / ${Math.round(
+   <span class="forecast-TempMax">
+      <strong>${Math.round(
+        forecast.temp.max
+      )}°</strong> </span> <span class="forecast-TempMin"> ${Math.round(
       forecast.temp.min
     )}°
     </span>
@@ -293,8 +305,10 @@ function displayCurrentForecast(response) {
       forecast.weather[0].icon
     }@2x.png" alt="icon"/>
     <br />
-    <span class="forecast-Temp">
-      <strong>${Math.round(forecast.main.temp_max)}°</strong> / ${Math.round(
+    <span class="forecast-TempMax">
+      <strong>${Math.round(
+        forecast.main.temp_max
+      )}°</strong> </span> <span class="forecast-TempMin"> ${Math.round(
       forecast.main.temp_min
     )}°
     </span>
