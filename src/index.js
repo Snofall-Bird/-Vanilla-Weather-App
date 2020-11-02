@@ -191,7 +191,6 @@ function convertToFahrenheit(event) {
   lowtempElement.innerHTML = Math.round(lowtempF);
   let forecastMax = document.querySelectorAll(".forecast-TempMax");
   forecastMax.forEach(function (item) {
-    console.log(item.innerHTML);
     let currentTemp = item.innerHTML;
     item.innerHTML = `${Math.round((currentTemp * 9) / 5 + 32)}`;
   });
@@ -219,7 +218,6 @@ function convertToCelsius(event) {
   lowtempElement.innerHTML = Math.round(lowTemp);
   let forecastMax = document.querySelectorAll(".forecast-TempMax");
   forecastMax.forEach(function (item) {
-    console.log(item.innerHTML);
     let currentTemp = item.innerHTML;
     item.innerHTML = Math.round((currentTemp - 32) * 5 + 9);
   });
@@ -242,11 +240,10 @@ let forecastMin = null;
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", convertToCelsius);
 
-// images not working??//
 function changeSky(response) {
   let skyImage = document.querySelector("#weatherSpace img");
   let value = response.data.weather[0].main;
-  console.log(value);
+
   if (value === "Rain" || value === "Drizzle") {
     skyImage.setAttribute("src", "images/rain.png");
     skyImage.setAttribute("alt", response.data.weather[0].description);
@@ -263,7 +260,6 @@ function changeSky(response) {
   }
 }
 
-// fiveDayForecast();
 function displayWeeklyForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecast = null;
