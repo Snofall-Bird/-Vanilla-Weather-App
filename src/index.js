@@ -191,7 +191,7 @@ function convertToFahrenheit(event) {
   lowtempElement.innerHTML = Math.round(lowtempF);
   let forecastMax = document.querySelectorAll(".forecast-TempMax");
   forecastMax.forEach(function (item) {
-    console.log(forecastMax);
+    console.log(item.innerHTML);
     let currentTemp = item.innerHTML;
     item.innerHTML = `${Math.round((currentTemp * 9) / 5 + 32)}`;
   });
@@ -219,7 +219,7 @@ function convertToCelsius(event) {
   lowtempElement.innerHTML = Math.round(lowTemp);
   let forecastMax = document.querySelectorAll(".forecast-TempMax");
   forecastMax.forEach(function (item) {
-    console.log(forecastMax);
+    console.log(item.innerHTML);
     let currentTemp = item.innerHTML;
     item.innerHTML = Math.round((currentTemp - 32) * 5 + 9);
   });
@@ -244,7 +244,7 @@ celsiusLink.addEventListener("click", convertToCelsius);
 
 // images not working??//
 function changeSky(response) {
-  let skyImage = document.querySelector("#weatherSpace");
+  let skyImage = document.querySelector("#weatherSpace img");
   let value = response.data.weather[0].main;
   console.log(value);
   if (value === "Rain" || value === "Drizzle") {
@@ -281,13 +281,13 @@ function displayWeeklyForecast(response) {
       forecast.weather[0].description
     }"/>
     <br />
-   <span class="forecast-TempMax">
-      <strong>${Math.round(
+   <strong><span class="forecast-TempMax">
+      ${Math.round(
         forecast.temp.max
-      )}°</strong> / </span> <span class="forecast-TempMin"> ${Math.round(
+      )} </span>°</strong> / <span class="forecast-TempMin"> ${Math.round(
       forecast.temp.min
-    )}°
-    </span>
+    )}
+    </span>°
     <br />
   </div>`;
   }
@@ -307,13 +307,13 @@ function displayCurrentForecast(response) {
       forecast.weather[0].icon
     }@2x.png" alt="icon"/>
     <br />
-    <span class="forecast-TempMax">
-      <strong>${Math.round(
+    <strong><span class="forecast-TempMax">
+      ${Math.round(
         forecast.main.temp_max
-      )}°</strong> / </span> <span class="forecast-TempMin"> ${Math.round(
+      )}</span>°</strong> /  <span class="forecast-TempMin"> ${Math.round(
       forecast.main.temp_min
-    )}°
-    </span>
+    )}
+    </span>°
     <br />
   </div>`;
   }
